@@ -11,6 +11,8 @@ SRC_URI[gcc-arm-none.sha256sum] = "96a029e2ae130a1210eaa69e309ea40463028eab18ba1
 
 PV = "7"
 
+RDEPENDS_${PN} += "python"
+
 S = "${WORKDIR}/gcc-arm-none-eabi-7-2017-q4-major"
 
 do_install() {
