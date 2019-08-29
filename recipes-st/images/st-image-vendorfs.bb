@@ -58,7 +58,9 @@ reformat_rootfs() {
         done
 
         # Move all expected files in /rootfs
-        mv ${IMAGE_ROOTFS}${IMAGE_PARTITION_MOUNTPOINT}/* ${IMAGE_ROOTFS}/
+        if [ $(ls -A1 ${IMAGE_ROOTFS}${IMAGE_PARTITION_MOUNTPOINT} | wc -l) -gt 0 ]; then
+            mv ${IMAGE_ROOTFS}${IMAGE_PARTITION_MOUNTPOINT}/* ${IMAGE_ROOTFS}/
+        fi
 
         # Remove empty boot folder
         rm -rf ${IMAGE_ROOTFS}${IMAGE_PARTITION_MOUNTPOINT}/
