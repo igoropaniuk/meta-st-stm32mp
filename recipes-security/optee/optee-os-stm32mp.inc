@@ -45,6 +45,10 @@ do_install() {
     #install TA devkit
     install -d ${D}${includedir}/optee/export-user_ta/
 
+    for f in  ${B}/out/export-ta_${OPTEE_ARCH}/* ; do
+        cp -aR  $f  ${D}/usr/include/optee/export-user_ta/
+    done
+
     if [ -n "${OPTEE_CONF}" ]; then
         for conf in ${OPTEE_CONF}; do
             for f in  ${B}/${conf}/export-ta_${OPTEE_ARCH}/* ; do
